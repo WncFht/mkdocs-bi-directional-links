@@ -21,8 +21,12 @@ class LinkProcessor:
             print(f"处理双向链接：'{file_ref}'。")  # 添加调试日志
             if not any(file_ref.endswith(ext) for ext in self.includes):
                 file_ref += ".md"
+
+            # 获取当前文件的路径
+            from_file = page.file.src_path
+
             # 使用 SearchIntegration 查找文件路径
-            file_path = search_integration.find_file(file_ref)
+            file_path = search_integration.find_file(from_file, file_ref)
             if not file_path:
                 logging.warning(f"未找到匹配的文件：'{file_ref}'。")
                 return match.group(0)  # 如果未找到文件，返回原始文本

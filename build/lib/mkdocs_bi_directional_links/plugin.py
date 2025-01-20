@@ -10,6 +10,9 @@ class BiDirectionalLinksPlugin(BasePlugin):
         self.link_processor = LinkProcessor()  # 双向链接处理模块
 
     def on_config(self, config):
+        """
+        在 MkDocs 加载配置时调用，初始化插件配置。
+        """
         if "bi_directional_links" in config.get("plugins", {}):
             plugin_config = config["plugins"]["bi_directional_links"]
             if isinstance(plugin_config, dict):  # 确保 plugin_config 是字典
@@ -18,7 +21,16 @@ class BiDirectionalLinksPlugin(BasePlugin):
                 self.debug = False
         else:
             self.debug = False
+
+        # 初始化 SearchIntegration
+        self.search_integration.load_config(config)
         return config
+
+    def on_files(self, files, config):
+        """
+        在 MkDocs 加载文件列表时调用，初始化文件缓存。
+        """
+        self.search_integration.load_files(files)
 
     def on_page_markdown(self, markdown, page, config, files):
         """
