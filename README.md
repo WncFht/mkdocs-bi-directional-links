@@ -90,8 +90,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request on [GitHub](https://github.com/yourusername/mkdocs-bi-directional-links).
+Contributions are welcome! Please open an issue or submit a pull request on [GitHub](https://github.com/WncFht/mkdocs-bi-directional-links).
 
 ## Support
 
-If you encounter any issues or have questions, please open an issue on [GitHub](https://github.com/yourusername/mkdocs-bi-directional-links).
+If you encounter any issues or have questions, please open an issue on [GitHub](https://github.com/WncFht/mkdocs-bi-directional-links).
