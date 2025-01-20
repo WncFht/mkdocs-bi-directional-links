@@ -9,9 +9,9 @@ class TestPlugin(unittest.TestCase):
         plugin = BiDirectionalLinksPlugin()
         self.assertFalse(plugin.debug)  # 确保调试模式默认关闭
 
-    def test_on_config(self):
+    def test_on_config_with_debug(self):
         """
-        测试插件配置加载。
+        测试插件配置加载（启用调试模式）。
         """
         plugin = BiDirectionalLinksPlugin()
         config = {
@@ -24,3 +24,19 @@ class TestPlugin(unittest.TestCase):
         }
         plugin.on_config(config)
         self.assertTrue(plugin.debug)  # 确保调试模式已启用
+
+    def test_on_config_without_debug(self):
+        """
+        测试插件配置加载（未启用调试模式）。
+        """
+        plugin = BiDirectionalLinksPlugin()
+        config = {
+            "docs_dir": "docs",
+            "plugins": {
+                "bi_directional_links": {
+                    "debug": False  # 未启用调试模式
+                }
+            }
+        }
+        plugin.on_config(config)
+        self.assertFalse(plugin.debug)  # 确保调试模式未启用

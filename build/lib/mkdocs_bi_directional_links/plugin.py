@@ -10,18 +10,14 @@ class BiDirectionalLinksPlugin(BasePlugin):
         self.link_processor = LinkProcessor()  # 双向链接处理模块
 
     def on_config(self, config):
-        """
-        在 MkDocs 加载配置时调用，初始化插件配置。
-        """
-        # 从插件配置中读取 debug 参数
         if "bi_directional_links" in config.get("plugins", {}):
-            self.debug = config["plugins"]["bi_directional_links"].get("debug", False)
+            plugin_config = config["plugins"]["bi_directional_links"]
+            if isinstance(plugin_config, dict):  # 确保 plugin_config 是字典
+                self.debug = plugin_config.get("debug", False)
+            else:
+                self.debug = False
         else:
             self.debug = False
-
-        self.search_integration.load_config(config)  # 加载 Search 插件配置
-        if self.debug:
-            logging.info("BiDirectionalLinksPlugin: 调试模式已启用。")
         return config
 
     def on_page_markdown(self, markdown, page, config, files):

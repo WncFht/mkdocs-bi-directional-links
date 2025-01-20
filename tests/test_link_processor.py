@@ -17,7 +17,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         测试双向链接处理模块。
         """
-        markdown = "[[page1.md]]"
+        markdown = "[[page1]]"
         result = self.processor.process_markdown(markdown, None, None, None, self.search_integration)
         self.assertIn('<a href="tests/test_data/page1.md">page1.md</a>', result)  # 确保生成正确的链接
 
@@ -25,7 +25,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         测试带自定义文本的双向链接。
         """
-        markdown = "[[page1.md|第一页]]"
+        markdown = "[[page1|第一页]]"
         result = self.processor.process_markdown(markdown, None, None, None, self.search_integration)
         self.assertIn('<a href="tests/test_data/page1.md">第一页</a>', result)  # 确保生成正确的链接
 
@@ -52,3 +52,11 @@ class TestLinkProcessor(unittest.TestCase):
         markdown = "![[audio.mp3]]"
         result = self.processor.process_markdown(markdown, None, None, None, self.search_integration)
         self.assertIn('<audio controls><source src="tests/test_data/audio.mp3"></audio>', result)  # 确保生成正确的音频标签
+
+    def test_process_markdown_file_not_found(self):
+        """
+        测试文件未找到时的处理逻辑。
+        """
+        markdown = "[[nonexistent.md]]"
+        result = self.processor.process_markdown(markdown, None, None, None, self.search_integration)
+        self.assertEqual(result, markdown)  # 确保返回原始文本
