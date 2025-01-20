@@ -1,4 +1,5 @@
 site_name: My Docs
+site_url: https://WncFht.github.io/notes/
 
 plugins:
   - search
@@ -7,6 +8,7 @@ plugins:
 
 nav:
   - Home: index.md
+  - index2: subdir/index.md
   - page1: page1.md
   - page2: subdir/page2.md
   - page4: dir2/page4.md

@@ -33,14 +33,14 @@ class SearchIntegration:
             else:
                 self.file_cache[file_name].append(file_path)
 
-        self.print_cache()
+        # self.print_cache()
 
     def find_file(self, from_file: str, file_ref: str) -> Optional[str]:
         """
         查找文件路径。
         """
         from_file = from_file.replace("\\", "/")
-        print(f"查找文件：from_file={from_file}, file_ref={file_ref}")  # 输出当前查找的文件
+        # print(f"查找文件：from_file={from_file}, file_ref={file_ref}")  # 输出当前查找的文件
 
         # 处理绝对路径
         # if file_ref.startswith("/"):
@@ -61,11 +61,11 @@ class SearchIntegration:
 
         # 处理 EzLink（需要搜索的链接）
         file_name = os.path.basename(file_ref)
-        print(f"处理 EzLink：file_name={file_name}")  # 输出文件名
+        # print(f"处理 EzLink：file_name={file_name}")  # 输出文件名
 
         # 1. 快速文件缓存查找
         if file_name in self.file_cache:
-            print(f"快速文件缓存查找：file_name={file_name}, 缓存={self.file_cache[file_name]}")  # 输出缓存内容
+            # print(f"快速文件缓存查找：file_name={file_name}, 缓存={self.file_cache[file_name]}")  # 输出缓存内容
             # 如果有多个匹配项，直接返回第一个
             return self.file_cache[file_name][0]
 

@@ -1,0 +1,3 @@
+- 图片：![[image.png]]
+- 视频：![[video.mp4]]
+- 音频：![[audio.mp3]]

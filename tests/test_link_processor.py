@@ -39,7 +39,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         markdown = "[[page1]]"
         result = self.processor.process_markdown(markdown, self.page, None, None, self.search_integration)
-        self.assertIn('<a href="tests/test_data/page1/">page1</a>', result)  # 确保生成正确的链接
+        self.assertIn('<a href="/tests/test_data/page1/">page1</a>', result)  # 确保生成正确的链接
 
     def test_process_markdown_with_text(self):
         """
@@ -47,7 +47,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         markdown = "[[page1|第一页]]"
         result = self.processor.process_markdown(markdown, self.page, None, None, self.search_integration)
-        self.assertIn('<a href="tests/test_data/page1/">第一页</a>', result)  # 确保生成正确的链接
+        self.assertIn('<a href="/tests/test_data/page1/">第一页</a>', result)  # 确保生成正确的链接
 
     def test_process_markdown_image(self):
         """
@@ -55,7 +55,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         markdown = "![[image.png]]"
         result = self.processor.process_markdown(markdown, self.page, None, None, self.search_integration)
-        self.assertIn('<img src="tests/test_data/image.png" alt="image.png">', result)  # 确保生成正确的图片标签
+        self.assertIn('<img src="/tests/test_data/image.png" alt="image.png">', result)  # 确保生成正确的图片标签
 
     def test_process_markdown_video(self):
         """
@@ -63,7 +63,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         markdown = "![[video.mp4]]"
         result = self.processor.process_markdown(markdown, self.page, None, None, self.search_integration)
-        self.assertIn('<video controls><source src="tests/test_data/video.mp4"></video>', result)  # 确保生成正确的视频标签
+        self.assertIn('<video controls><source src="/tests/test_data/video.mp4"></video>', result)  # 确保生成正确的视频标签
 
     def test_process_markdown_audio(self):
         """
@@ -71,7 +71,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         markdown = "![[audio.mp3]]"
         result = self.processor.process_markdown(markdown, self.page, None, None, self.search_integration)
-        self.assertIn('<audio controls><source src="tests/test_data/audio.mp3"></audio>', result)  # 确保生成正确的音频标签
+        self.assertIn('<audio controls><source src="/tests/test_data/audio.mp3"></audio>', result)  # 确保生成正确的音频标签
 
     def test_process_markdown_file_not_found(self):
         """
