@@ -18,6 +18,9 @@ class LinkProcessor:
             file_ref = match.group(1).strip()  # 获取文件引用
             text = match.group(3).strip() if match.group(3) else file_ref  # 获取自定义文本
 
+            print(f"处理双向链接：'{file_ref}'。")  # 添加调试日志
+            if not any(file_ref.endswith(ext) for ext in self.includes):
+                file_ref += ".md"
             # 使用 SearchIntegration 查找文件路径
             file_path = search_integration.find_file(file_ref)
             if not file_path:

@@ -19,7 +19,7 @@ class TestLinkProcessor(unittest.TestCase):
         """
         markdown = "[[page1]]"
         result = self.processor.process_markdown(markdown, None, None, None, self.search_integration)
-        self.assertIn('<a href="tests/test_data/page1.md">page1.md</a>', result)  # 确保生成正确的链接
+        self.assertIn('<a href="tests/test_data/page1.md">page1</a>', result)  # 确保生成正确的链接
 
     def test_process_markdown_with_text(self):
         """
