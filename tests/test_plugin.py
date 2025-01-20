@@ -14,6 +14,13 @@ class TestPlugin(unittest.TestCase):
         测试插件配置加载。
         """
         plugin = BiDirectionalLinksPlugin()
-        config = {"docs_dir": "docs", "plugins": {"mkdocs_bi_directional_links": {"debug": True}}}
+        config = {
+            "docs_dir": "docs",
+            "plugins": {
+                "bi_directional_links": {
+                    "debug": True  # 启用调试模式
+                }
+            }
+        }
         plugin.on_config(config)
         self.assertTrue(plugin.debug)  # 确保调试模式已启用

@@ -15,4 +15,4 @@ class TestSearchIntegration(unittest.TestCase):
         file_ref = "page1.md"
         result = search_integration.find_file(file_ref)
         self.assertIsNotNone(result)  # 确保找到文件
-        self.assertEqual(result, "docs/page1.md")  # 确保路径正确 
+        self.assertEqual(result, "docs/page1.md")  # 确保路径正确

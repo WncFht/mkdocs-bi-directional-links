@@ -1,0 +1,7 @@
+setup.py
+mkdocs_bi_directional_links.egg-info/PKG-INFO
+mkdocs_bi_directional_links.egg-info/SOURCES.txt
+mkdocs_bi_directional_links.egg-info/dependency_links.txt
+mkdocs_bi_directional_links.egg-info/entry_points.txt
+mkdocs_bi_directional_links.egg-info/requires.txt
+mkdocs_bi_directional_links.egg-info/top_level.txt
