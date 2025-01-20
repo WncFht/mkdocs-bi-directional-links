@@ -30,6 +30,8 @@ class LinkProcessor:
             if not file_path:
                 logging.warning(f"未找到匹配的文件：'{file_ref}'。")
                 return match.group(0)  # 如果未找到文件，返回原始文本
+            else:
+                print(f"找到文件：'{file_ref}' -> '{file_path}'。")  # 添加调试日志
 
             # 统一路径分隔符为正斜杠
             file_path = file_path.replace("\\", "/")

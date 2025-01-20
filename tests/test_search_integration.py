@@ -21,6 +21,8 @@ class TestSearchIntegration(unittest.TestCase):
             File("tests/test_data/audio.mp3", "tests/test_data", "tests/test_data", False)
         ]
 
+        self.search_integration.load_files(self.files)
+
     def test_find_file(self):
         """
         测试 Search 插件的文件查找功能。
@@ -29,8 +31,6 @@ class TestSearchIntegration(unittest.TestCase):
         from_file = "tests/test_data/page.md"
         file_ref = "page1.md"
         result = self.search_integration.find_file(from_file, file_ref)
-        if result is None:
-            self.search_integration.print_trie()
         self.assertIsNotNone(result)  # 确保找到文件
         self.assertEqual(result, "tests/test_data/page1.md")  # 确保路径正确
 
@@ -54,3 +54,18 @@ class TestSearchIntegration(unittest.TestCase):
         result = self.search_integration.find_file(from_file, file_ref)
         self.assertIsNotNone(result)  # 确保找到文件
         self.assertEqual(result, "tests/test_data/subdir/page2.md")  # 确保路径正确
+
+    def test_cache_output(self):
+        """
+        测试输出缓存功能。
+        """
+        # 模拟查找文件并缓存结果
+        from_file = "tests/test_data/page.md"
+        file_ref = "page1.md"
+        result = self.search_integration.find_file(from_file, file_ref)
+        self.assertIsNotNone(result)  # 确保找到文件
+        self.assertEqual(result, "tests/test_data/page1.md")  # 确保路径正确
+
+        # 调用 print_cache 方法输出缓存内容
+        cache_output = self.search_integration.file_cache
+        self.assertIn("page1.md", cache_output)  # 确保缓存中包含查找的文件

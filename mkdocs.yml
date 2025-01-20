@@ -9,3 +9,4 @@ nav:
   - Home: index.md
   - page1: page1.md
   - page2: subdir/page2.md
+  - page4: dir2/page4.md
