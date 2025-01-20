@@ -1,0 +1,3 @@
+Welcome, world!
+
+![[puppy.jpg]]

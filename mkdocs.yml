@@ -2,8 +2,8 @@ site_name: My Docs
 
 plugins:
   - search
-  - bi_directional_links:
-      debug: true  # 启用调试模式
+  - bi_directional_links
+      # debug: true  # 启用调试模式
 
 nav:
   - Home: index.md

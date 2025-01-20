@@ -36,7 +36,8 @@ class LinkProcessor:
 
             # 根据文件类型生成 HTML 标签
             if file_path.endswith(".md"):
-                return f'<a href="{file_path}">{text}</a>'  # Markdown 文件生成链接
+                file_path = file_path[:-3]  # 去除 .md 扩展名
+                return f'<a href="{file_path}/">{text}</a>'  # Markdown 文件生成链接
             elif any(file_path.endswith(ext) for ext in [".png", ".jpg", ".gif"]):
                 return f'<img src="{file_path}" alt="{text}">'  # 图片文件生成图片标签
             elif any(file_path.endswith(ext) for ext in [".mp4", ".webm"]):

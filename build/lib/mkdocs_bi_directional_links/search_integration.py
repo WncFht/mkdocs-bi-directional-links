@@ -47,19 +47,22 @@ class SearchIntegration:
         """
         查找文件路径。
         """
+        from_file = from_file.replace("\\", "/")
         print(f"查找文件：from_file={from_file}, file_ref={file_ref}")  # 输出当前查找的文件
 
         # 处理绝对路径
-        if file_ref.startswith("/"):
-            abs_path = os.path.join(self.docs_dir, file_ref[1:])
-            print(f"处理绝对路径：abs_path={abs_path}")  # 输出绝对路径
-            if os.path.isfile(abs_path):
-                return abs_path.replace("\\", "/")
-            return None
+        # if file_ref.startswith("/"):
+        #     abs_path = os.path.join(self.docs_dir, file_ref[1:])
+        #     abs_path = abs_path.replace("\\", "/")
+        #     print(f"处理绝对路径：abs_path={abs_path}")  # 输出绝对路径
+        #     if os.path.isfile(abs_path):
+        #         return abs_path.replace("\\", "/")
+        #     return None
 
         # 处理直接链接（相对路径）
         from_dir = os.path.dirname(from_file)
-        abs_path = os.path.join(self.docs_dir, from_dir, file_ref)
+        abs_path = os.path.join(from_dir, file_ref)
+        abs_path = abs_path.replace("\\", "/")
         print(f"处理相对路径：from_dir={from_dir}, abs_path={abs_path}")  # 输出相对路径
         if os.path.isfile(abs_path):
             return abs_path.replace("\\", "/")

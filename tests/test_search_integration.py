@@ -29,6 +29,8 @@ class TestSearchIntegration(unittest.TestCase):
         from_file = "tests/test_data/page.md"
         file_ref = "page1.md"
         result = self.search_integration.find_file(from_file, file_ref)
+        if result is None:
+            self.search_integration.print_trie()
         self.assertIsNotNone(result)  # 确保找到文件
         self.assertEqual(result, "tests/test_data/page1.md")  # 确保路径正确
 
