@@ -13,7 +13,8 @@ class BiDirectionalLinksPlugin(BasePlugin):
         """
         在 MkDocs 加载配置时调用，初始化插件配置。
         """
-        # print("加载配置")
+        logging.debug("加载配置")
+        
         if "bi_directional_links" in config.get("plugins", {}):
             plugin_config = config["plugins"]["bi_directional_links"]
             if isinstance(plugin_config, dict):  # 确保 plugin_config 是字典

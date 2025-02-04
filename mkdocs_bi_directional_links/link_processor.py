@@ -40,10 +40,9 @@ class LinkProcessor:
             site_url = config.get("site_url", "")
             base_path = ""
             if site_url:
-                # 使用正则表达式提取第二个路径段
                 match = re.match(r"https?://[^/]+/([^/]+)/?", site_url)
                 if match:
-                    base_path = match.group(1)  # 提取第二个路径段
+                    base_path = match.group(1)
                     if base_path:
                         base_path = f"/{base_path}"
 
@@ -58,8 +57,8 @@ class LinkProcessor:
             elif any(file_path.endswith(ext) for ext in [".mp3", ".wav"]):
                 return f'<audio controls><source src="{base_path}/{file_path}"></audio>'  # 音频文件生成音频标签
             else:
-                return match.group(0)  # 其他文件类型返回原始文本
-
+                return match.group(0)
+            
         # 使用正则表达式匹配 [[file]] 和 [[file|text]] 语法
         markdown = re.sub(r'!?\[\[([^|\]\n]+)(\|([^\]\n]+))?\]\]', replace_bi_directional_link, markdown)
         return markdown
